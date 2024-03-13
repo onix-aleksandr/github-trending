@@ -26,9 +26,19 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 dependencies {
-    implementation libs.appcompat
-    implementation libs.material
+    implementation libs.bundles.app
+    implementation libs.bundles.database
+    implementation libs.bundles.network
+    implementation libs.bundles.images
+    implementation libs.bundles.navigation
+    implementation libs.bundles.threading
+    implementation libs.bundles.views
+    annotationProcessor libs.androidx.room.compiler
 }

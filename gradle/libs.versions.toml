@@ -2,10 +2,83 @@
 agp = "8.3.0"
 appcompat = "1.6.1"
 material = "1.11.0"
+activity = "1.8.2"
+recycler_view = "1.3.2"
+constraint_layout = "2.1.4"
+lifecycle_livedata = "2.7.0"
+swipe_refresh_layout = "1.1.0"
+lifecycle_viewmodel = "2.7.0"
+navigation_fragment = "2.7.7"
+navigation_ui = "2.7.7"
+coil = "2.4.0"
+retrofit = "2.9.0"
+room = "2.6.1"
+rxandroid = "3.0.2"
+rxjava = "3.1.5"
+viewpager = "1.1.0-alpha01"
 
 [libraries]
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recycler_view" }
+activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraint_layout" }
+lifecycle-livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle_livedata" }
+lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle_viewmodel" }
+navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigation_fragment" }
+navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigation_ui" }
+coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+rxandroid = { module = "io.reactivex.rxjava3:rxandroid", version.ref = "rxandroid" }
+rxjava = { module = "io.reactivex.rxjava3:rxjava", version.ref = "rxjava" }
+adapter-rxjava3 = { module = "com.squareup.retrofit2:adapter-rxjava3", version.ref = "retrofit" }
+viewpager = { module = "androidx.viewpager:viewpager", version.ref = "viewpager" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+android-room-rxjava3 = { module = "androidx.room:room-rxjava3", version.ref = "room" }
+android-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swipe_refresh_layout" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
+
+[bundles]
+app = [
+    "appcompat",
+    "activity",
+    "lifecycle-livedata",
+    "lifecycle-viewmodel",
+    "material"
+]
+
+network = [
+    "retrofit",
+    "converter-gson",
+    "adapter-rxjava3"
+]
+
+views = [
+    "constraintlayout",
+    "recyclerview",
+    "android-swiperefreshlayout",
+    "viewpager"
+]
+
+database = [
+    "room-runtime",
+    "android-room-rxjava3",
+]
+
+navigation = [
+    "navigation-fragment",
+    "navigation-ui"
+]
+
+threading = [
+    "rxandroid",
+    "rxjava"
+]
+
+images = [
+    "coil"
+]
