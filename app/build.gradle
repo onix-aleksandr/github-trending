@@ -38,7 +38,6 @@ dependencies {
     implementation libs.bundles.network
     implementation libs.bundles.images
     implementation libs.bundles.navigation
-    implementation libs.bundles.threading
     implementation libs.bundles.views
     annotationProcessor libs.androidx.room.compiler
 }

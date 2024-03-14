@@ -13,8 +13,6 @@ navigation_ui = "2.7.7"
 coil = "2.4.0"
 retrofit = "2.9.0"
 room = "2.6.1"
-rxandroid = "3.0.2"
-rxjava = "3.1.5"
 viewpager = "1.1.0-alpha01"
 
 [libraries]
@@ -30,13 +28,9 @@ navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version
 coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
-rxandroid = { module = "io.reactivex.rxjava3:rxandroid", version.ref = "rxandroid" }
-rxjava = { module = "io.reactivex.rxjava3:rxjava", version.ref = "rxjava" }
-adapter-rxjava3 = { module = "com.squareup.retrofit2:adapter-rxjava3", version.ref = "retrofit" }
 viewpager = { module = "androidx.viewpager:viewpager", version.ref = "viewpager" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
-android-room-rxjava3 = { module = "androidx.room:room-rxjava3", version.ref = "room" }
 android-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swipe_refresh_layout" }
 
 [plugins]
@@ -53,8 +47,7 @@ app = [
 
 network = [
     "retrofit",
-    "converter-gson",
-    "adapter-rxjava3"
+    "converter-gson"
 ]
 
 views = [
@@ -66,17 +59,11 @@ views = [
 
 database = [
     "room-runtime",
-    "android-room-rxjava3",
 ]
 
 navigation = [
     "navigation-fragment",
     "navigation-ui"
-]
-
-threading = [
-    "rxandroid",
-    "rxjava"
 ]
 
 images = [
