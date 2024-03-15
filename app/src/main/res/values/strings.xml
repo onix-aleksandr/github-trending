@@ -5,4 +5,12 @@
     <string name="last_day">Last day</string>
     <string name="default_description">This repository doesn\'t have description</string>
     <string name="search">Search</string>
+    <string name="repository_name">Repository Name:</string>
+    <string name="owner_username">Owner Username:</string>
+    <string name="stars_count">Stars Count:</string>
+    <string name="forks_count">Forks Count:</string>
+    <string name="language">Language:</string>
+    <string name="description">Description:</string>
+    <string name="created_at">Created At:</string>
+    <string name="url">URL:</string>
 </resources>

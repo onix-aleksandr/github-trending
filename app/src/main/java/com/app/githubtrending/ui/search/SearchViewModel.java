@@ -44,6 +44,10 @@ public class SearchViewModel extends ViewModel {
         search(false);
     }
 
+    public void reload() {
+        search(true);
+    }
+
     private void search(boolean refresh) {
         if (Boolean.TRUE.equals(isLoading.getValue())) return;
 

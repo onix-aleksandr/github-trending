@@ -33,6 +33,21 @@ public class Repository implements Parcelable {
         language = (repository.getLanguage() != null) ? repository.getLanguage() : "";
     }
 
+    public Repository(long id, int starsCount, String name, String ownerUsername,
+                      String imageUrl, String description, String url,
+                      LocalDateTime createdAt, long forksCount, String language) {
+        this.id = id;
+        this.starsCount = starsCount;
+        this.name = name;
+        this.ownerUsername = ownerUsername;
+        this.imageUrl = imageUrl;
+        this.description = description;
+        this.url = url;
+        this.createdAt = createdAt;
+        this.forksCount = forksCount;
+        this.language = language;
+    }
+
     private final long id;
 
     private final int starsCount;

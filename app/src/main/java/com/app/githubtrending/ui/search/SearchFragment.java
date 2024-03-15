@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.githubtrending.R;
 import com.app.githubtrending.component.scroll.EndlessScrollListener;
@@ -53,12 +54,17 @@ public class SearchFragment extends Fragment implements SearchClickListener {
 
         binding.setViewModel(viewModel);
 
+        binding.searchListContainer.setOnRefreshListener(() -> {
+            binding.searchListContainer.setRefreshing(false);
+            viewModel.reload();
+        });
+
         navController = Navigation.findNavController(requireActivity(), R.id.mainFragmentHost);
     }
 
     private void configureList() {
         adapter = new SearchAdapter(this);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         binding.searchList.setLayoutManager(layoutManager);
         binding.searchList.setAdapter(adapter);
 

@@ -16,6 +16,8 @@ retrofit = "2.9.0"
 room = "2.6.1"
 viewpager = "1.1.0-alpha01"
 okhttp = "4.11.0"
+rxandroid = "3.0.2"
+rxjava = "3.1.5"
 
 [libraries]
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
@@ -36,6 +38,9 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 android-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swipe_refresh_layout" }
 okthhp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 okthhp-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
+rxandroid = { module = "io.reactivex.rxjava3:rxandroid", version.ref = "rxandroid" }
+rxjava = { module = "io.reactivex.rxjava3:rxjava", version.ref = "rxjava" }
+androidx-room-rxjava3 = { module = "androidx.room:room-rxjava3", version.ref = "room" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -66,6 +71,9 @@ views = [
 
 database = [
     "room-runtime",
+    "androidx-room-rxjava3",
+    "rxjava",
+    "rxandroid"
 ]
 
 navigation = [
