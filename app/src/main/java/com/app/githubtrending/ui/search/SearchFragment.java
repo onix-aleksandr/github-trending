@@ -24,6 +24,7 @@ import com.app.githubtrending.databinding.FragmentSearchBinding;
 import com.app.githubtrending.ui.home.HomeFragmentDirections;
 import com.app.githubtrending.ui.search.adapter.SearchAdapter;
 import com.app.githubtrending.ui.search.adapter.SearchClickListener;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +61,12 @@ public class SearchFragment extends Fragment implements SearchClickListener {
 
     private void configureSearch() {
         binding.searchInput.addTextChangedListener(new DelayedTextWatcher(text -> viewModel.setQuery(text)));
+        viewModel.errorEvent.observe(getViewLifecycleOwner(), s -> {
+            if (s != null && !s.isEmpty()) {
+                Snackbar.make(binding.getRoot(), s, Snackbar.LENGTH_SHORT).show();
+                viewModel.clearError();
+            }
+        });
     }
 
     private void configureList() {

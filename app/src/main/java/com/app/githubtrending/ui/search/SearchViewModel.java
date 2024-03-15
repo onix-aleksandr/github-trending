@@ -18,8 +18,9 @@ public class SearchViewModel extends ViewModel {
 
     private final TrendingRepository repository = new TrendingRepository();
 
-    MutableLiveData<List<Repository>> repositories = new MutableLiveData<>();
+    public MutableLiveData<List<Repository>> repositories = new MutableLiveData<>();
     public MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
+    public MutableLiveData<String> errorEvent = new MutableLiveData<>();
 
     private FilterType filterType = FilterType.LastMonth;
     private String query = "";
@@ -72,6 +73,7 @@ public class SearchViewModel extends ViewModel {
 
             @Override
             public void onError(Throwable error) {
+                errorEvent.postValue(error.getMessage());
                 isLoading.setValue(false);
             }
         });
@@ -88,5 +90,9 @@ public class SearchViewModel extends ViewModel {
                 return repos.size() / REPOSITORIES_PER_PAGE;
             }
         }
+    }
+
+    public void clearError() {
+        errorEvent.setValue(null);
     }
 }

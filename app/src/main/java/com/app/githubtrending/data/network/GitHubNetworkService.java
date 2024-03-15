@@ -26,7 +26,6 @@ public class GitHubNetworkService {
         httpClientBuilder.addInterceptor(chain -> {
             Request originalRequest = chain.request();
             Request.Builder requestBuilder = originalRequest.newBuilder()
-                .header("Authorization", "Bearer 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")
                 .header("X-GitHub-Api-Version", "2022-11-28")
                 .method(originalRequest.method(), originalRequest.body());
 
