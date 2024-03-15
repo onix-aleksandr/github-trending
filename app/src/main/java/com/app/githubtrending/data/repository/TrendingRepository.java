@@ -10,7 +10,6 @@ import com.app.githubtrending.data.network.GitHubNetworkService;
 import com.app.githubtrending.data.repository.params.TrendingRepositoriesParams;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,7 +23,7 @@ public class TrendingRepository {
     private static final String SEARCH_SORT = "stars";
 
 
-    public void searchRepositories(TrendingRepositoriesParams params, NetworkCallback<List<Repository>> callback) {
+    public void searchRepositories(TrendingRepositoriesParams params, NetworkCallback<ArrayList<Repository>> callback) {
         Call<ApiRepositories> call = service.getGithubApiService().searchRepositories(
             params.buildQuery(),
             SEARCH_SORT,
@@ -50,9 +49,9 @@ public class TrendingRepository {
         });
     }
 
-    private void mapRepositories(ApiRepositories repos, NetworkCallback<List<Repository>> callback) {
-        List<ApiRepository> apiRepositories = repos.getItems();
-        List<Repository> repositories = new ArrayList<>();
+    private void mapRepositories(ApiRepositories repos, NetworkCallback<ArrayList<Repository>> callback) {
+        ArrayList<ApiRepository> apiRepositories = repos.getItems();
+        ArrayList<Repository> repositories = new ArrayList<>();
 
         for (ApiRepository apiRepository : apiRepositories) {
             repositories.add(new Repository(apiRepository));

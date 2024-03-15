@@ -1,37 +1,17 @@
 package com.app.githubtrending.data.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 
 import com.app.githubtrending.data.entity.network.ApiRepository;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
-public class Repository {
-
-    public Repository(
-        long id,
-        String ownerUsername,
-        String name,
-        String imageUrl,
-        String description,
-        String url,
-        LocalDateTime createdAt,
-        int starsCount,
-        long forksCount,
-        String language
-    ) {
-        this.id = id;
-        this.ownerUsername = ownerUsername;
-        this.name = name;
-        this.imageUrl = imageUrl;
-        this.description = description;
-        this.starsCount = starsCount;
-        this.url = url;
-        this.createdAt = createdAt;
-        this.forksCount = forksCount;
-        this.language = language;
-    }
+public class Repository implements Parcelable {
 
     public Repository(ApiRepository repository) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssX");
@@ -122,5 +102,71 @@ public class Repository {
             ", forksCount=" + forksCount +
             ", language='" + language + '\'' +
             '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeInt(starsCount);
+        dest.writeString(name);
+        dest.writeString(ownerUsername);
+        dest.writeString(imageUrl);
+        dest.writeString(description);
+        dest.writeString(url);
+        dest.writeString(createdAt.toString());
+        dest.writeLong(forksCount);
+        dest.writeString(language);
+    }
+
+    protected Repository(Parcel in) {
+        id = in.readLong();
+        starsCount = in.readInt();
+        name = in.readString();
+        ownerUsername = in.readString();
+        imageUrl = in.readString();
+        description = in.readString();
+        url = in.readString();
+        createdAt = LocalDateTime.parse(in.readString());
+        forksCount = in.readLong();
+        language = in.readString();
+    }
+
+    public static final Creator<Repository> CREATOR = new Creator<Repository>() {
+        @Override
+        public Repository createFromParcel(Parcel in) {
+            return new Repository(in);
+        }
+
+        @Override
+        public Repository[] newArray(int size) {
+            return new Repository[size];
+        }
+    };
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Repository yourClass = (Repository) o;
+        return id == yourClass.id &&
+            starsCount == yourClass.starsCount &&
+            forksCount == yourClass.forksCount &&
+            Objects.equals(name, yourClass.name) &&
+            Objects.equals(ownerUsername, yourClass.ownerUsername) &&
+            Objects.equals(imageUrl, yourClass.imageUrl) &&
+            Objects.equals(description, yourClass.description) &&
+            Objects.equals(url, yourClass.url) &&
+            Objects.equals(createdAt, yourClass.createdAt) &&
+            Objects.equals(language, yourClass.language);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, starsCount, name, ownerUsername, imageUrl, description, url, createdAt, forksCount, language);
     }
 }

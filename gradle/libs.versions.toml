@@ -11,9 +11,11 @@ lifecycle_viewmodel = "2.7.0"
 navigation_fragment = "2.7.7"
 navigation_ui = "2.7.7"
 coil = "2.4.0"
+safe_args = "2.7.7"
 retrofit = "2.9.0"
 room = "2.6.1"
 viewpager = "1.1.0-alpha01"
+okhttp = "4.11.0"
 
 [libraries]
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
@@ -32,9 +34,12 @@ viewpager = { module = "androidx.viewpager:viewpager", version.ref = "viewpager"
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 android-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swipe_refresh_layout" }
+okthhp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+okthhp-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
+safeArgs = { id = "androidx.navigation.safeargs", version.ref = "safe_args" }
 
 [bundles]
 app = [
@@ -47,7 +52,9 @@ app = [
 
 network = [
     "retrofit",
-    "converter-gson"
+    "converter-gson",
+    "okthhp",
+    "okthhp-logging"
 ]
 
 views = [

@@ -19,5 +19,9 @@
         android:id="@+id/detailsFragment"
         android:name="com.app.githubtrending.ui.details.DetailsFragment"
         android:label="DetailsFragment"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="repository"
+            app:argType="com.app.githubtrending.data.entity.Repository" />
+    </fragment>
 </navigation>
