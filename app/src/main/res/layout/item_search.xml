@@ -23,8 +23,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="2dp"
             android:textColor="@color/black"
             android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/itemSearchAvatar"
+            app:layout_constraintTop_toBottomOf="@id/itemSearchRepoName"
+            tools:text="Some Username" />
+
+        <TextView
+            android:id="@+id/itemSearchRepoName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/itemSearchAvatar"
             app:layout_constraintTop_toTopOf="@+id/itemSearchAvatar"
             tools:text="Some Username" />
@@ -45,9 +58,9 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:ellipsize="end"
-            android:lines="3"
+            android:lines="2"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/itemSearchAvatar"

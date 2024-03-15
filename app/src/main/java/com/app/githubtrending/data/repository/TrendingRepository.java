@@ -35,7 +35,7 @@ public class TrendingRepository {
             @Override
             public void onResponse(@NonNull Call<ApiRepositories> call, @NonNull Response<ApiRepositories> response) {
                 ApiRepositories repos = response.body();
-                if (repos != null && repos.getItems() != null && !repos.getItems().isEmpty()) {
+                if (repos != null && repos.getItems() != null) {
                     mapRepositories(repos, callback);
                 } else {
                     callback.onError(new Throwable("Server error"));

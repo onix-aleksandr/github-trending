@@ -151,7 +151,7 @@ public class Repository implements Parcelable {
         language = in.readString();
     }
 
-    public static final Creator<Repository> CREATOR = new Creator<Repository>() {
+    public static final Creator<Repository> CREATOR = new Creator<>() {
         @Override
         public Repository createFromParcel(Parcel in) {
             return new Repository(in);

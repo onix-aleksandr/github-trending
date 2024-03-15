@@ -23,33 +23,31 @@ public class SearchViewModel extends ViewModel {
 
     private FilterType filterType = FilterType.LastMonth;
     private String query = "";
+    private boolean hasNextPage;
 
     public SearchViewModel() {
-        search(true);
+        search(true, true);
     }
 
     public void setFilterType(FilterType type) {
         if (filterType == type) return;
 
         filterType = type;
-        search(true);
+        search(true, false);
     }
 
     public void setQuery(CharSequence query) {
         this.query = query.toString();
-        search(true);
+        search(true, true);
     }
 
     public void loadMore() {
-        search(false);
+        search(false, false);
     }
 
-    public void reload() {
-        search(true);
-    }
-
-    private void search(boolean refresh) {
-        if (Boolean.TRUE.equals(isLoading.getValue())) return;
+    private void search(boolean refresh, boolean force) {
+        if (Boolean.TRUE.equals(isLoading.getValue()) && !force) return;
+        if (!hasNextPage && !refresh) return;
 
         isLoading.setValue(true);
         int page = getCurrentPage(refresh);
@@ -58,6 +56,7 @@ public class SearchViewModel extends ViewModel {
             @Override
             public void onSuccess(ArrayList<Repository> data) {
                 isLoading.setValue(false);
+                hasNextPage = data.size() == REPOSITORIES_PER_PAGE;
                 if (repositories.getValue() == null) {
                     repositories.postValue(data);
                 } else {

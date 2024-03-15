@@ -64,13 +64,9 @@ public class DetailsFragment extends Fragment {
             .build();
         imageLoader.enqueue(request);
 
-        binding.detailsLike.setOnClickListener(v -> {
-            viewModel.switchFavouriteStatus(repository);
-        });
+        binding.detailsLike.setOnClickListener(v -> viewModel.switchFavouriteStatus(repository));
 
-        binding.detailsBack.setOnClickListener(v -> {
-            Navigation.findNavController(requireActivity(), R.id.mainFragmentHost).popBackStack();
-        });
+        binding.detailsBack.setOnClickListener(v -> Navigation.findNavController(requireActivity(), R.id.mainFragmentHost).popBackStack());
 
         viewModel.isInFavourites.observe(getViewLifecycleOwner(), isInFavourites -> {
             if (isInFavourites) {

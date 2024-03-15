@@ -28,6 +28,7 @@ public class SearchViewHolder extends RecyclerView.ViewHolder {
             binding.itemSearchDescription.setText(repository.getDescription());
         }
         binding.itemSearchUsername.setText(repository.getOwnerUsername());
+        binding.itemSearchRepoName.setText(repository.getName());
 
         ImageLoader imageLoader = Coil.imageLoader(itemView.getContext());
 

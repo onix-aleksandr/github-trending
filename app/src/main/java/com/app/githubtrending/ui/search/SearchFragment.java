@@ -51,15 +51,15 @@ public class SearchFragment extends Fragment implements SearchClickListener {
         configureViewModel();
         configureSpinner();
         configureList();
+        configureSearch();
 
         binding.setViewModel(viewModel);
 
-        binding.searchListContainer.setOnRefreshListener(() -> {
-            binding.searchListContainer.setRefreshing(false);
-            viewModel.reload();
-        });
-
         navController = Navigation.findNavController(requireActivity(), R.id.mainFragmentHost);
+    }
+
+    private void configureSearch() {
+        binding.searchInput.addTextChangedListener(new DelayedTextWatcher(text -> viewModel.setQuery(text)));
     }
 
     private void configureList() {
